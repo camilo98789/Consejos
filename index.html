@@ -4,28 +4,34 @@
 <meta charset="UTF-8" />
 <title>Consejo Trading</title>
 <style>
-  /* Reset scrollbar */
+  /* Sin scroll, fondo negro */
   body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Sin scroll */
+    overflow: hidden;
     background: #101010;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  
+
   #consejo {
-    font-size: 2rem;
+    font-size: 3rem;
+    font-style: italic;
+    color: white;
     text-align: center;
     max-width: 80%;
-    padding: 20px 40px;
-    background: rgba(24, 24, 24, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    /* Efecto glow */
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #9df2ff,
+      0 0 40px #9df2ff,
+      0 0 50px #9df2ff,
+      0 0 60px #9df2ff;
   }
 
   /* Animación de círculos cayendo */
@@ -68,7 +74,7 @@
   }
 
   cambiarConsejo();
-  setInterval(cambiarConsejo, 60000);
+  setInterval(cambiarConsejo, 30000); // cambia cada 30 segundos
 
   // Crear animación de círculos cayendo
   const numCirculos = 30;
