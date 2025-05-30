@@ -2,30 +2,52 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<title>Consejos de Trading Dinámicos</title>
+<title>Consejo Trading</title>
 <style>
-  body {
+  /* Reset scrollbar */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Sin scroll */
     background: #101010;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    font-family: sans-serif;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  #consejo-box {
-    background: #181818;
-    padding: 20px;
-    border-radius: 10px;
-    min-height: 120px;
+  
+  #consejo {
+    font-size: 2rem;
+    text-align: center;
+    max-width: 80%;
+    padding: 20px 40px;
+    background: rgba(24, 24, 24, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
   }
-  h3 {
-    margin-top: 0;
+
+  /* Animación de círculos cayendo */
+  .circle {
+    position: fixed;
+    top: -50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes fall {
+    to {
+      transform: translateY(110vh);
+    }
   }
 </style>
 </head>
 <body>
-  <div id="consejo-box">
-    <h3>🧠 Consejo de Trading</h3>
-    <p id="consejo-text">Cargando consejo...</p>
-  </div>
+
+<div id="consejo">Cargando consejo...</div>
 
 <script>
   const consejos = [
@@ -38,15 +60,40 @@
   ];
 
   let indice = 0;
-  const textoConsejo = document.getElementById("consejo-text");
+  const textoConsejo = document.getElementById("consejo");
 
   function cambiarConsejo() {
     textoConsejo.textContent = consejos[indice];
     indice = (indice + 1) % consejos.length;
   }
 
-  cambiarConsejo(); // Mostrar el primero de una vez
-  setInterval(cambiarConsejo, 60000); // Cambiar cada 60000 ms = 1 minuto
+  cambiarConsejo();
+  setInterval(cambiarConsejo, 60000);
+
+  // Crear animación de círculos cayendo
+  const numCirculos = 30;
+
+  for(let i = 0; i < numCirculos; i++) {
+    let circle = document.createElement('div');
+    circle.classList.add('circle');
+    
+    // Tamaño random entre 10px y 40px
+    let size = Math.random() * 30 + 10;
+    circle.style.width = size + 'px';
+    circle.style.height = size + 'px';
+
+    // Posición horizontal random
+    circle.style.left = Math.random() * 100 + 'vw';
+
+    // Duración de caída random entre 7 y 15 segundos
+    circle.style.animationDuration = (Math.random() * 8 + 7) + 's';
+
+    // Delay random para que no caigan todos juntos
+    circle.style.animationDelay = (Math.random() * 15) + 's';
+
+    document.body.appendChild(circle);
+  }
 </script>
+
 </body>
 </html>
