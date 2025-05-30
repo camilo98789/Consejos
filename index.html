@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Consejos de Trading Dinámicos</title>
+<style>
+  body {
+    background: #101010;
+    color: white;
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  #consejo-box {
+    background: #181818;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 120px;
+  }
+  h3 {
+    margin-top: 0;
+  }
+</style>
+</head>
+<body>
+  <div id="consejo-box">
+    <h3>🧠 Consejo de Trading</h3>
+    <p id="consejo-text">Cargando consejo...</p>
+  </div>
+
+<script>
+  const consejos = [
+    "No persigas las pérdidas",
+    "Sigue tu plan, no tus emociones",
+    "Menos es más: filtra tus setups",
+    "Siempre arriesga solo lo que puedas permitirte perder",
+    "No operes con dinero que no puedas perder",
+    "Aprende de cada operación, ganes o pierdas"
+  ];
+
+  let indice = 0;
+  const textoConsejo = document.getElementById("consejo-text");
+
+  function cambiarConsejo() {
+    textoConsejo.textContent = consejos[indice];
+    indice = (indice + 1) % consejos.length;
+  }
+
+  cambiarConsejo(); // Mostrar el primero de una vez
+  setInterval(cambiarConsejo, 60000); // Cambiar cada 60000 ms = 1 minuto
+</script>
+</body>
+</html>
